@@ -41,6 +41,11 @@ kotlin {
       dependencies {
         implementation(kotlin("test-common"))
         implementation(kotlin("test-annotations-common"))
+        implementation("io.kotest:kotest-assertions-core") {
+          version {
+            branch = "native_target"
+          }
+        }
       }
     }
     val linuxX64Main by getting {
