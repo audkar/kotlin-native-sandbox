@@ -18,19 +18,13 @@ kotlin {
     binaries {
       executable(listOf(DEBUG))
     }
+  }
+
+  targets.all {
     compilations.all {
-      binariesTaskName
       kotlinOptions {
-        allWarningsAsErrors = true
-        freeCompilerArgs = listOf(
-          "-progressive",
-          "-Xopt-in=" +
-              "kotlin.Experimental",
-//                            "kotlinx.coroutines.ExperimentalCoroutinesApi," +
-//                            "kotlinx.coroutines.FlowPreview," +
-//                        "kotlinx.serialization.UnstableDefault",
-          "-Xallow-result-return-type"
-        )
+        allWarningsAsErrors = false
+        freeCompilerArgs = listOf("-Xallow-result-return-type")
       }
     }
   }
@@ -53,6 +47,15 @@ kotlin {
       dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines")
       }
+    }
+  }
+
+  sourceSets.all {
+    languageSettings.apply {
+      progressiveMode = true
+      enableLanguageFeature("InlineClasses")
+      useExperimentalAnnotation("kotlin.RequiresOptIn")
+      useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
     }
   }
 }
