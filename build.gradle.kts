@@ -1,9 +1,10 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.CURRENT
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.3.72"
-  id("com.github.ben-manes.versions") version "0.28.0"
+  kotlin("multiplatform") version "1.4.0"
+  id("com.github.ben-manes.versions") version "0.29.0"
 }
 
 group = "app.nameplaceholder"
@@ -14,10 +15,12 @@ repositories {
 }
 
 kotlin {
-  linuxX64 {
-    binaries {
-      executable(listOf(DEBUG))
-    }
+  linuxX64()
+  mingwX64()
+  macosX64()
+
+  targets.withType(KotlinNativeTarget::class).all {
+    binaries { executable(listOf(RELEASE)) }
   }
 
   targets.all {
@@ -30,11 +33,9 @@ kotlin {
   }
 
   sourceSets {
-    val coroutines = "1.3.7"
     commonMain {
       dependencies {
-        implementation(kotlin("stdlib-common"))
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
       }
     }
     commonTest {
@@ -45,7 +46,6 @@ kotlin {
     }
     val linuxX64Main by getting {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines")
       }
     }
   }
@@ -53,7 +53,6 @@ kotlin {
   sourceSets.all {
     languageSettings.apply {
       progressiveMode = true
-      enableLanguageFeature("InlineClasses")
       useExperimentalAnnotation("kotlin.RequiresOptIn")
       useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
     }
@@ -82,6 +81,6 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
 }
 
 tasks.wrapper {
-  gradleVersion = "6.5.1"
+  gradleVersion = "6.6"
   distributionType = Wrapper.DistributionType.ALL
 }
