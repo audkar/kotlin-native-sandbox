@@ -10,7 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value=":runDebugExecutableLinuxX64" />
+          <option value=":runReleaseExecutableLinuxX64" />
         </list>
       </option>
       <option name="vmOptions" value="" />
