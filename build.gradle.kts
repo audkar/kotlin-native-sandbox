@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.4.0"
-  id("com.github.ben-manes.versions") version "0.29.0"
+  kotlin("multiplatform") version "1.4.10"
+  id("com.github.ben-manes.versions") version "0.33.0"
 }
 
 group = "app.nameplaceholder"
