@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.4.10"
-  id("com.github.ben-manes.versions") version "0.33.0"
+  kotlin("multiplatform") version "1.4.20"
+  id("com.github.ben-manes.versions") version "0.36.0"
 }
 
 group = "app.nameplaceholder"
@@ -27,7 +27,6 @@ kotlin {
     compilations.all {
       kotlinOptions {
         allWarningsAsErrors = false
-        freeCompilerArgs = listOf("-Xallow-result-return-type")
       }
     }
   }
@@ -35,7 +34,7 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
       }
     }
     commonTest {
@@ -81,6 +80,6 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
 }
 
 tasks.wrapper {
-  gradleVersion = "6.7"
+  gradleVersion = "6.7.1"
   distributionType = Wrapper.DistributionType.ALL
 }
