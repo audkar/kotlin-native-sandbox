@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.4.21"
+  kotlin("multiplatform") version "1.4.30"
   id("com.github.ben-manes.versions") version "0.36.0"
 }
 
@@ -16,6 +16,7 @@ repositories {
 
 kotlin {
   linuxX64()
+  linuxArm32Hfp()
   mingwX64()
   macosX64()
 
@@ -34,7 +35,7 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+//        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
       }
     }
     commonTest {
@@ -80,6 +81,6 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
 }
 
 tasks.wrapper {
-  gradleVersion = "6.8.1"
+  gradleVersion = "6.8.2"
   distributionType = Wrapper.DistributionType.ALL
 }
