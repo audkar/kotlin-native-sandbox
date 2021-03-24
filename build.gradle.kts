@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.4.30"
-  id("com.github.ben-manes.versions") version "0.36.0"
+  kotlin("multiplatform") version "1.4.32"
+  id("com.github.ben-manes.versions") version "0.38.0"
 }
 
 group = "app.nameplaceholder"
@@ -35,7 +35,6 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-//        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
       }
     }
     commonTest {
@@ -54,7 +53,6 @@ kotlin {
     languageSettings.apply {
       progressiveMode = true
       useExperimentalAnnotation("kotlin.RequiresOptIn")
-      useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
     }
   }
 }
@@ -81,6 +79,6 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
 }
 
 tasks.wrapper {
-  gradleVersion = "6.8.2"
+  gradleVersion = "6.8.3"
   distributionType = Wrapper.DistributionType.ALL
 }
