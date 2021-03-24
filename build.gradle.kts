@@ -21,7 +21,11 @@ kotlin {
   macosX64()
 
   targets.withType(KotlinNativeTarget::class).all {
-    binaries { executable(listOf(RELEASE)) }
+    binaries {
+      executable {
+        runTask?.setStandardInput(System.`in`)
+      }
+    }
   }
 
   targets.all {
