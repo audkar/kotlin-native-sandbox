@@ -3,8 +3,8 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.4.32"
-  id("com.github.ben-manes.versions") version "0.38.0"
+  kotlin("multiplatform") version "1.5.20"
+  id("com.github.ben-manes.versions") version "0.39.0"
 }
 
 group = "app.nameplaceholder"
@@ -83,6 +83,6 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
 }
 
 tasks.wrapper {
-  gradleVersion = "6.8.3"
+  gradleVersion = "7.1"
   distributionType = Wrapper.DistributionType.ALL
 }
