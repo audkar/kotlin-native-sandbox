@@ -3,11 +3,11 @@ import com.github.benmanes.gradle.versions.updates.gradle.GradleReleaseChannel.C
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform") version "1.5.20"
+  kotlin("multiplatform") version "1.5.30"
   id("com.github.ben-manes.versions") version "0.39.0"
 }
 
-group = "app.nameplaceholder"
+group = "eu.kaud"
 version = "0.1"
 
 repositories {
@@ -56,7 +56,7 @@ kotlin {
   sourceSets.all {
     languageSettings.apply {
       progressiveMode = true
-      useExperimentalAnnotation("kotlin.RequiresOptIn")
+      optIn("kotlin.RequiresOptIn")
     }
   }
 }
@@ -83,6 +83,6 @@ tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
 }
 
 tasks.wrapper {
-  gradleVersion = "7.1"
+  gradleVersion = "7.2"
   distributionType = Wrapper.DistributionType.ALL
 }
